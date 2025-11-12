@@ -27,7 +27,7 @@ Future of Password Management
 Role in Broader Cybersecurity Landscape
 
 ### References
---
+
 ## Division of Work by Section
 ### Sam
 Technical Background
