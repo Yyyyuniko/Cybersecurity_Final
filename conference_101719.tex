@@ -175,7 +175,22 @@ A central security concern raised by the incident is the reliance on user-chosen
 The breach also exposed limitations in LastPass's application of zero-knowledge principles beyond the core vault data. While the encrypted blobs could not be decrypted without user master passwords, the exposure of unencrypted metadata and infrastructure secrets demonstrates that "zero knowledge" at the cryptographic layer does not automatically translate into zero knowledge at the system level. The ability of attackers to move laterally from a compromised developer machine to cloud storage containing production backups indicates insufficient segmentation, monitoring, and key management between development and production environments. From a security architecture perspective, the incident underscores that protecting a high-value target such as a password manager requires rigorous hardening of supporting systems, not only strong client-side encryption.
 
 From the perspective of this paper, the LastPass 2022 breach illustrates both the strengths and weaknesses of modern password manager designs. On one hand, properly configured vaults with strong, unique master passwords and high PBKDF2 iteration counts remain resistant to practical decryption, even after large-scale data exfiltration. On the other hand, the incident demonstrates that implementation details, legacy configuration choices, and operational practices can materially erode the security guarantees that password managers aim to provide. Effective deployment therefore requires not only robust cryptography but also secure development practices, strict separation of environments, continuous configuration hardening, and user education about master password strength and key derivation settings.
+
 \subsection{Other Notable Vulnerabilities}
+
+While the 2022 LastPass breach is the most prominent recent incident, other password managers and the broader ecosystem have exhibited serious weaknesses that reveal recurring design and implementation pitfalls. Academic analyses of password managers demonstrate that even when strong cryptography is used, subtle web and UI logic flaws can undermine security guarantees. Real-world incidents further show that server-side compromise, supply-chain attacks, and local side-channel vulnerabilities all pose significant risks to users of these tools~\cite{silver2014password, li2014emperor}.
+
+Early systematic evaluations revealed that many commercial password managers were vulnerable to web-based attacks that bypassed their cryptographic safeguards. Silver et al.\ showed that multiple tools would autofill credentials into non-TLS pages, attacker-controlled iframes, or scripts injected via cross-site scripting (XSS), enabling credential theft even though vault contents were securely encrypted at rest~\cite{silver2014password}. Li et al.\ later demonstrated that browser-integrated ``cloud'' password managers suffered from origin mismatches, incomplete URL comparison, and DOM confusion, allowing cross-site credential extraction in several services~\cite{li2014emperor}. Together, these studies highlight that autofill policies and origin checking are as critical to security as the underlying encryption.
+
+Beyond LastPass, other enterprise password managers have suffered high-impact breaches that reveal significant architectural trade-offs. In 2017, OneLogin disclosed that attackers had obtained the ability to decrypt some customer data by compromising keys stored in its infrastructure, illustrating the dangers of server-side possession of decryption material for centrally hosted vaults~\cite{krebsonelogin2017}. In April 2021, Click Studios’ Passwordstate experienced a supply-chain attack in which a malicious software update delivered a backdoor to customers, allowing exfiltration of stored credentials and system metadata~\cite{hipaapasswordstate2021}. Subsequent analyses emphasized that Passwordstate’s server-centric design, which lacked strict client-side encryption for sensitive data, allowed attacker-controlled code to decrypt passwords directly on customers’ servers~\cite{cyberis2024keepass}.
+
+Local-only password managers are not immune to serious flaws. In 2023, CVE-2023-32784 revealed a vulnerability in KeePass 2.x allowing extraction of the master password from a memory dump, even when the database was locked or KeePass was no longer running, due to predictable in-memory password handling~\cite{cve2023-32784}. Public proof-of-concept implementations further demonstrate near-cleartext reconstruction of master passwords from RAM artifacts~\cite{dohney2023keepassdumper}. These findings underscore that even password managers with strong cryptography can be compromised by unsafe memory management and insufficient resistance to forensic recovery.
+
+Finally, several incidents highlight that password managers can also be compromised indirectly through account-level attacks such as credential stuffing. In early 2023, Gen Digital reported that thousands of NortonLifeLock password manager accounts were taken over when attackers reused passwords from unrelated breaches to access vaults lacking multi-factor authentication (MFA)~\cite{isc22023lastpass}. While the underlying cryptographic design remained intact, the incident illustrates that password managers function as high-value authentication hubs: without strong MFA, anomaly detection, and rate limiting, attackers may compromise all downstream accounts.
+
+Collectively, these incidents demonstrate that password manager security depends on far more than strong ciphers or key-derivation functions. Secure origin validation, safe autofill logic, robust server-side key management, protected update channels, hardened memory handling, and resilient account-level protections such as MFA all play critical roles. These insights inform the common vulnerability patterns discussed in the following subsection.
+
+
 \subsection{Common Vulnerability Patterns}
 
 \section{Conclusion and Discussion}
@@ -229,6 +244,38 @@ in \emph{Proceedings of the IEEE Symposium on Security and Privacy},
 A.~Biryukov, D.~Dinu, and D.~Khovratovich,
 ``Argon2: The memory-hard function for password hashing and other applications,''
 Password Hashing Competition Report, 2016.
+\bibitem{silver2014password}
+D.~Silver, S.~Jana, D.~Boneh, E.~Chen, and C.~Jackson,
+``Password Managers: Attacks and Defenses,''
+in \emph{Proceedings of the 23rd USENIX Security Symposium (USENIX Security 14)}, 2014.
+\bibitem{li2014emperor}
+Z.~Li, W.~He, D.~Akhawe, and D.~Song,
+``The Emperor's New Password Manager: Security Analysis of Web-based Password Managers,''
+Technical Report No. UCB/EECS-2014-138, University of California, Berkeley, 2014.
+\bibitem{krebsonelogin2017}
+B.~Krebs,
+``OneLogin: Breach Exposed Ability to Decrypt Data,''
+KrebsOnSecurity, Jun. 2017.
+\bibitem{hipaapasswordstate2021}
+HIPAA Journal,
+``PasswordState Password Manager Supply-Chain Attack,''
+\emph{HIPAA Journal}, May 2021.
+\bibitem{isc22023lastpass}
+(ISC)$^2$,
+``The LastPass Breach: Are Online Password Managers Still Safe?,''
+\emph{(ISC)$^2$ Insights}, Feb. 2023.
+\bibitem{cve2023-32784}
+National Institute of Standards and Technology,
+``CVE-2023-32784: KeePass 2.x Master Password Recovery from Memory,''
+\emph{National Vulnerability Database}, May 2023.
+\bibitem{dohney2023keepassdumper}
+V.~Dohny,
+``KeePass 2.X Master Password Dumper (CVE-2023-32784),'' GitHub repository, 2023.
+\bibitem{cyberis2024keepass}
+Cyberis,
+``Exploiting KeePass CVE-2023-32784,''
+Cyberis, Oct. 2024.
+
 \end{thebibliography}
 
 \end{document}
