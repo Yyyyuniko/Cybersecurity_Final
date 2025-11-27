@@ -191,12 +191,89 @@ Finally, several incidents highlight that password managers can also be compromi
 Collectively, these incidents demonstrate that password manager security depends on far more than strong ciphers or key-derivation functions. Secure origin validation, safe autofill logic, robust server-side key management, protected update channels, hardened memory handling, and resilient account-level protections such as MFA all play critical roles. These insights inform the common vulnerability patterns discussed in the following subsection.
 
 
-\section{Conclusion and Discussion}
+\section{Discussion and Conclusion}
+
 \subsection{Best Practices and Recommendations}
-\subsection{Future of Password Management}
+Effective password management is essential for safeguarding digital identities and sensitive information. The following best practices are recommended for both individuals and organizations to maximize the security benefits of password managers while minimizing associated risks:
+
+\begin{enumerate}
+
+\item Use a strong, unique master password (at least 12–16 characters) and avoid predictable patterns~\cite{nistpassword}.
+\item Enable multi-factor authentication (MFA) to add an extra layer of protection~\cite{ncsc2025}.
+\item Choose a reputable password manager that employs strong encryption (such as AES-256), uses a zero-knowledge architecture, and has a proven security track record~\cite{securityorg2025}.
+\item Regularly update passwords and vaults, and take advantage of built-in breach monitoring and vault health reports~\cite{cyberinsider2025}.
+\item Avoid password reuse and sharing, and use secure sharing features for collaborative environments~\cite{ncsc2025}.
+\item Keep software updated and maintain secure backups of your vault~\cite{ncsc2025}.
+\item regular training on password management best practices to promote strong security behaviors~\cite{forbes2024}.
+\end{enumerate}
+
+
 \subsection{Role in Broader Cybersecurity Landscape}
+Password management is a foundational element of modern cybersecurity, serving as a critical defense against threats like phishing, credential stuffing, and account takeovers~\cite{ncsc2025,forbes2024}. By enabling the generation, storage, and retrieval of strong, unique passwords, password managers reduce the risk of password reuse and weak password practices, which are among the leading causes of data breaches~\cite{ncsc2025,crowdstrike2025}. In organizational settings, they help enforce robust credential policies, facilitate secure sharing, and streamline compliance with regulatory standards such as HIPAA, PCI DSS, and NIST~\cite{senscy2025,bitwarden2023}. Despite their benefits, password managers themselves can become high-value targets for attackers, underscoring the importance of strong encryption, MFA, and regular security audits~\cite{devolutions2024}. The centralization of credentials necessitates careful management of master passwords and ongoing user education to prevent unauthorized access~\cite{forbes2024}. As the cybersecurity landscape evolves, password managers will continue to play a vital role in protecting digital identities and sensitive information, supporting the transition to passwordless authentication, and enhancing overall resilience against credential-based attacks~\cite{specopsfuture2025,fido2025}.
+
+
+\subsection{Future of Password Management}
+
+The future of password management is rapidly evolving, with a clear trend toward moving beyond traditional passwords to more secure and user-friendly authentication methods. Passwordless authentication, leveraging technologies such as biometrics, hardware security keys, and standards like FIDO2 and WebAuthn, is gaining widespread adoption and is projected to become the norm in both consumer and enterprise environments by 2025~\cite{specopsfuture2025}. Password managers will continue to play a vital role, but their function is shifting to support and integrate with these new authentication paradigms, offering advanced features such as AI-driven password strength analysis, adaptive authentication, and seamless integration with passkey and biometric systems~\cite{sqmag2025,pcloud2025}. Regulatory guidelines, such as those from NIST, are adapting to these changes by prioritizing password length over complexity, eliminating mandatory password expiration, and strongly encouraging the use of password managers and passwordless authentication~\cite{scytale2024}. This reflects a broader industry shift toward balancing robust security with improved user experience and reduced administrative overhead~\cite{blueally2025}.
+
+\subsection{Conclusion}
+The landscape of password management in 2025 reflects a dynamic shift driven by emerging technologies, evolving threats, and changing user expectations. Future trends show a marked move toward passwordless authentication methods such as biometrics, passkeys, and hardware security modules, which aim to improve both security and user convenience~\cite{blueally2025,fido2025}. Industry leaders and cybersecurity authorities emphasize the importance of adopting phishing-resistant MFA solutions, like FIDO2 passkeys, and integrating biometric login for seamless, ultra-secure online access~\cite{scytale2024,pcloud2025}.
+
+Additionally, regulatory guidelines such as the 2025 NIST password recommendations prioritize longer passphrases (12-16 characters), minimizing reliance on complex but easily memorable passwords, and discouraging unnecessary password resets unless a breach occurs~\cite{scytale2024}. This shift reduces user burden while enhancing overall security, aligning with the broader move toward systemic, technology driven security architectures. The growing market for password managers projected to surpass \$3.2 billion further underscores their critical role in this transformative period, providing enterprise and individual users with advanced tools for securely managing credentials and enabling the transition to passwordless systems~\cite{sqmag2025}.
+
+Overall, the convergence of innovative authentication technologies, regulatory guidance, and market growth positions password management as a central component of a resilient cybersecurity posture in 2025 and beyond. As threats become more sophisticated, organizations and individuals must remain adaptable, adopting new standards and best practices that emphasize both security and ease of use. Strategic investments in passwordless solutions, combined with robust password management, will be instrumental in mitigating risks, reducing friction, and maintaining trust in digital identities~\cite{fido2025,blueally2025}.
 
 \begin{thebibliography}{00}
+
+\bibitem{scytale2024}
+Scytale, ``2024 NIST password guidelines, enhancing security practices,'' 2024. [Online]. Available: https://scytale.ai/resources/2024-nist-password-guidelines-enhancing-security-practices/. Accessed: Nov. 27, 2025.
+
+\bibitem{nistpassword}
+NIST, ``How do I create a good password?,'' n.d. [Online]. Available: https://www.nist.gov/cybersecurity/how-do-i-create-good-password. Accessed: Nov. 27, 2025.
+\bibitem{scytale2024}
+Scytale, ``2024 NIST password guidelines, enhancing security practices,'' 2024. [Online]. Available: https://scytale.ai/resources/2024-nist-password-guidelines-enhancing-security-practices/. Accessed: Nov. 27, 2025.
+
+\bibitem{cyberinsider2025}
+CyberInsider, ``Best password manager,'' n.d. [Online]. Available: https://cyberinsider.com/password-manager/best-password-manager/. Accessed: Nov. 27, 2025.
+
+\bibitem{securityorg2025}
+Security.org, ``Best password manager,'' n.d. [Online]. Available: https://www.security.org/password-manager/best/. Accessed: Nov. 27, 2025.
+
+\bibitem{devolutions2024}
+Devolutions, ``Threat landscape 2024 for password managers,'' 2024. [Online]. Available: {https://cdndevolutions.blob.core.windows.net/documents/whitepapers/threat-landscape-2024-for-password-manager.pdf}. Accessed: Nov. 27, 2025.
+
+
+\bibitem{ncsc2025}
+National Cyber Security Centre, ``Password managers,'' n.d. [Online]. Available: https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/password-managers. Accessed: Nov. 27, 2025.
+
+\bibitem{senscy2025}
+Senscy, ``Password managers: The key to stronger business cybersecurity,'' 2025. [Online]. Available: \url{https://senscy.com/reduce-the-risk-of-a-cyberattack-invest-in-a-password-manager/}. Accessed: Nov. 27, 2025.
+
+\bibitem{forbes2024}
+T. Bradley, ``Password managers, the essential defense against today's cyber threats,'' Oct. 2024. [Online]. Available: https://www.forbes.com/sites/tonybradley/2024/10/24/password-managers-the-essential-defense-against-todays-cyber-threats/. Accessed: Nov. 27, 2025.
+
+\bibitem{securden2025}
+Securden, ``Password management best practices,'' n.d. [Online]. Available: https://www.securden.com/blog/password-management-best-practices.html. Accessed: Nov. 27, 2025
+
+\bibitem{sqmag2025}
+SQ Magazine, ``Password Manager Statistics 2025: Trends \& Growth Insights,'' 2025. [Online]. Available: \url{https://sqmagazine.co.uk/password-manager-statistics/}. Accessed: Nov. 27, 2025.
+
+\bibitem{pcloud2025}
+pCloud, ``Password Trends for 2025 and Beyond,'' 2025. [Online]. Available: \url{https://blog.pcloud.com/password-trends-for-2025-and-beyond/}. Accessed: Nov. 27, 2025.
+
+\bibitem{specopsfuture2025}
+Specops Software, ``The future of passwords: Emerging technologies and trends,'' 2025. [Online]. Available: \url{https://specopssoft.com/blog/future-passwords-emerging-technologies/}. Accessed: Nov. 27, 2025.
+\bibitem{crowdstrike2025}
+CrowdStrike, ``Password storage: Saving, managing \& protecting them,'' 2025. [Online]. Available: \url{https://www.crowdstrike.com/en-us/cybersecurity-101/identity-protection/password-storage/}. Accessed: Nov. 27, 2025.
+
+\bibitem{specopsfuture2025}
+Specops Software, ``The future of passwords: Emerging technologies and trends,'' 2025. [Online]. Available: \url{https://specopssoft.com/blog/future-passwords-emerging-technologies/}. Accessed: Nov. 27, 2025.
+
+\bibitem{blueally2025}
+BlueAlly, ``Password Security Best Practices for 2025: An Essential Guide,'' 2025. [Online]. Available: \url{https://www.blueally.com/password-security-best-practices-for-2025-an-essential-guide/}. Accessed: Nov. 27, 2025.
+
+\bibitem{fido2025}
+FIDO Alliance, ``Consumer password and passkey trends: World Passkey Day 2025,'' 2025. [Online]. Available: \url{https://fidoalliance.org/wpd-report-2025-consumer-password-passkey-trends/}. Accessed: Nov. 27, 2025.
 \bibitem{nordpass2023}
 NordPass, ``Juggling security: How many passwords does the average person have in 2024?,'' Apr. 2024. [Online]. Available: https://nordpass.com/blog/how-many-passwords-does-average-person-have/. Accessed: Nov. 12, 2025.
 \bibitem{miller1956}
