@@ -188,8 +188,6 @@ Local-only password managers are not immune to serious flaws. In 2023, CVE-2023-
 
 Finally, several incidents highlight that password managers can also be compromised indirectly through account-level attacks such as credential stuffing. In early 2023, Gen Digital reported that thousands of NortonLifeLock password manager accounts were taken over when attackers reused passwords from unrelated breaches to access vaults lacking multi-factor authentication (MFA)~\cite{isc22023lastpass}. While the underlying cryptographic design remained intact, the incident illustrates that password managers function as high-value authentication hubs: without strong MFA, anomaly detection, and rate limiting, attackers may compromise all downstream accounts.
 
-Collectively, these incidents demonstrate that password manager security depends on far more than strong ciphers or key-derivation functions. Secure origin validation, safe autofill logic, robust server-side key management, protected update channels, hardened memory handling, and resilient account-level protections such as MFA all play critical roles. These insights inform the common vulnerability patterns discussed in the following subsection.
-
 
 \section{Discussion and Conclusion}
 
